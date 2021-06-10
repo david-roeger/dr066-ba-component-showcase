@@ -1,0 +1,11 @@
+.custom-animation {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    transform: scale(0.4);
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
