@@ -1,7 +1,4 @@
 const theme = require('dr066-ba-design-token-builder/tailwindTheme');
-theme.extend.animation = {
-  'ping-slow': 'ping 1s linear infinite',
-}
 
 module.exports = {
   purge: {

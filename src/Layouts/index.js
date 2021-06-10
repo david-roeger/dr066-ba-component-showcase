@@ -1,1 +1,2 @@
-export { Index } from './home/home'
+export { Home } from './Home/Home'
+export { Rooms } from './Rooms/Rooms'
