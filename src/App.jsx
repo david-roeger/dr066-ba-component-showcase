@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Grid, Navigation, NavIconButton, NavIcon, Text} from 'dr066-ba-development-system';
+import { Grid, Navigation, NavIconButton, NavIcon, Text } from 'dr066-ba-development-system';
 
 import { Rooms } from './Layouts/index'
 
+import data from './Utils/Data'
 
 function App() {
+  console.log(data);
   return (
         <div className="font-inter">
           <Grid full>
@@ -24,8 +26,16 @@ function App() {
               </NavIconButton>
             </Navigation>
             
-            <div className="col-start-1 col-span-2 m-sm md:col-span-4 md:m-md lg:col-span-5 lg:m-lg lg:ml-0 xl:col-span-6 xl:m-xl xl:ml-0">
-              <Rooms></Rooms>
+            <div className="col-start-1 col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-6 h-screen z-0">
+              {
+                data.map((room, index) => (
+                  <div key={index} className="h-full overflow-auto">
+                      <Rooms room={room}>
+                      </Rooms>
+                    </div>
+                ))
+              }
+
             </div>
           </Grid>
         </div>

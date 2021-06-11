@@ -9,8 +9,8 @@ import { Text } from 'dr066-ba-development-system'
 export function DeviceElement({ device }) {
     const [deviceState, setDeviceState] = useState(device);
     function updateDeviceState(device) {
-        console.log(device);
         setDeviceState(device);
+        // update global json
     }
 
     function getAttributeTemplate(attribute, device) {
@@ -57,7 +57,7 @@ export function DeviceElement({ device }) {
                 <DeviceIcon type={device.type} colorClass={device.cube} />
             </DeviceIconContainer>
             <div className="flex-grow grid gap-xs">
-                <Text>{device.name}</Text>
+                <Text colorClass={device.cube} >{device.name}</Text>
                 {device.attributes.map((attribute) => (
                 <div key={attribute.id}>
                     {getAttributeTemplate(attribute, device)}
@@ -66,7 +66,7 @@ export function DeviceElement({ device }) {
             </div>
         </div>
         <div className="bg-gray-300 border rounded-r-sm flex">
-            <div className="my-auto">
+            <div className="mt-auto">
                 <SystemIconContainer>
                     <SystemIcon type="next"/>
                 </SystemIconContainer>
