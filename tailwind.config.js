@@ -2,7 +2,7 @@ const theme = require('dr066-ba-design-token-builder/tailwindTheme');
 
 module.exports = {
   purge: {
-    content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}']
+    content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}', './node_modules/dr066-ba-development-system/src/**/*.{vue,js,ts,jsx,tsx}']
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
