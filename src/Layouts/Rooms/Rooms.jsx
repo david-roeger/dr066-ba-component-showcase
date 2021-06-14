@@ -31,49 +31,5 @@ export function Rooms( { room }) {
                 ))
             }
         </Card>
-
-        <Card title="Geräte">
-            {
-                devices.map((device, index) => (
-                    <div key={index}>
-                        <DeviceElement device={device}>
-                        </DeviceElement>
-                    </div>
-                ))
-            }
-        </Card>
-
-        <Card title="Geräte">
-            {
-                devices.map((device, index) => (
-                    <div key={index}>
-                        <DeviceElement device={device}>
-                        </DeviceElement>
-                    </div>
-                ))
-            }
-        </Card>
-
-        <Card title="Geräte">
-            {
-                devices.map((device, index) => (
-                    <div key={index}>
-                        <DeviceElement device={device}>
-                        </DeviceElement>
-                    </div>
-                ))
-            }
-        </Card>
-
-        <Card title="Geräte">
-            {
-                devices.map((device, index) => (
-                    <div key={index}>
-                        <DeviceElement device={device}>
-                        </DeviceElement>
-                    </div>
-                ))
-            }
-        </Card>
     </div>
 }
