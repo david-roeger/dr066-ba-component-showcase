@@ -2,7 +2,17 @@ export default [
     {
         id: 0,
         type: 'room',
-        overview: ['light, heating'],   
+        overviews: [
+            {
+                id: 0,
+                type: 'light',
+                name: 'Helligkeit',
+                value: 80,
+                unit: '%',
+                devices: 2,
+                string: 'Lampe(n) an'
+            },
+        ],   
         devices: [
             {
                 id: 0,
