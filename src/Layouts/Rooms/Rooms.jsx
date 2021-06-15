@@ -27,10 +27,7 @@ export function Rooms( { room }) {
         return children
     }
 
-    return <div className="flex flex-col gap-md p-sm mb-[48px] md:p-md lg:mb-0 lg:p-lg lg:pl-0 xl:p-xl xl:pl-0">
-        <SystemIconContainer>
-            <SystemIcon type="back" />
-        </SystemIconContainer>
+    return <div className="flex flex-col gap-md p-sm md:p-md lg:mb-0 lg:p-lg lg:pl-0 xl:p-xl xl:pl-0">
         <Text size="xl">
             {room.name}
         </Text>

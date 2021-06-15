@@ -28,10 +28,10 @@ function App() {
               </NavIconButton>
             </Navigation>
             
-            <div className="col-start-1 col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-6 h-screen z-0">
+            <div className="col-start-1 col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-6">
               {
                 data.map((room, index) => (
-                  <div key={index} className="h-full overflow-auto">
+                  <div key={index}>
                       <Rooms room={room}>
                       </Rooms>
                     </div>
