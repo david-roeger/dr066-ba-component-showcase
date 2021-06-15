@@ -7,7 +7,7 @@ import { Rooms } from './Layouts/index'
 import d from './Utils/Data'
 
 function App() {
-  const data  = [d[0]];
+  const data  = [d[1]];
 
   console.log(data);
   return (
