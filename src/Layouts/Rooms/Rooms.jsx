@@ -27,7 +27,7 @@ export function Rooms( { room }) {
         return children
     }
 
-    return <div className="flex flex-col gap-md p-sm md:p-md lg:mb-0 lg:p-lg lg:pl-0 xl:p-xl xl:pl-0">
+    return <div className="flex flex-col gap-md p-sm pb-xl md:p-md lg:mb-0 lg:p-lg lg:pl-0 xl:p-xl xl:pl-0">
         <Text size="xl">
             {room.name}
         </Text>
