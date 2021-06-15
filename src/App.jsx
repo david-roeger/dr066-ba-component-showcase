@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Grid, Navigation, NavIconButton, NavIcon, Text } from 'dr066-ba-development-system';
+import { Grid, Navigation, NavIconButton, NavIcon, Text, VideoElement } from 'dr066-ba-development-system';
 
 import { Rooms } from './Layouts/index'
 
-import data from './Utils/Data'
+import d from './Utils/Data'
 
 function App() {
+  const data  = [d[0]];
+
   console.log(data);
   return (
         <div className="font-inter">
@@ -37,11 +39,10 @@ function App() {
               }
 
             </div>
-          </Grid>
+            </Grid>
         </div>
   );
 }
-
 export default App
 
 

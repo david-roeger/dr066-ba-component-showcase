@@ -11,6 +11,10 @@ export function StateElement({ state }) {
         switch (state.type) {
             case 'light':
                 return getLightTemplate(state);
+            case 'camera':
+                return getCameraTemplate(state);
+            case 'garage':
+                return getGarageTemplate(state);
             default:
                 break;
         }
@@ -23,8 +27,23 @@ export function StateElement({ state }) {
         </StateIconContainer> 
     }
 
+    function getCameraTemplate(state){
+        return  <StateIconContainer>
+            <StateIconCamera state={state.value == 'An'}>
+            </StateIconCamera>
+        </StateIconContainer> 
+    }
+
+    function getGarageTemplate(state){
+        return  <StateIconContainer>
+            <StateIconGarage state={state.value}>
+            </StateIconGarage>
+        </StateIconContainer> 
+    }
+
+
     return (
-    <section className="flex flex-col items-center md:flex-row gap-sm">
+    <section className="flex flex-col items-center md:flex-row md:gap-sm">
         {getStateIconTemplate(stateState)}
         <div>
             <p className="hidden md:block">

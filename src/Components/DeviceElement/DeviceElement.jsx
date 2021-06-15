@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 import { Slider, SliderScala, SliderElement } from 'dr066-ba-development-system'
 import { Toggle, ToggleScala, ToggleElement } from 'dr066-ba-development-system'
+import { Value, ValueElement } from 'dr066-ba-development-system'
 import { DeviceIconContainer, DeviceIcon } from 'dr066-ba-development-system'
 import { SystemIconContainer, SystemIcon } from 'dr066-ba-development-system'
 import { Text } from 'dr066-ba-development-system'
 
+ 
 function useForceUpdate(){
     const [value, setValue] = useState(0); // integer state
     return () => setValue(value => value + 1); // update the state to force render
@@ -17,8 +19,6 @@ export function DeviceElement({ device }) {
     function updateDeviceState(d) {
         setDeviceState(d);
         forceUpdate();
-        console.log(deviceState)
-        // update global json
     }
 
     function getAttributeTemplate(attribute, d) {
@@ -59,7 +59,7 @@ export function DeviceElement({ device }) {
 
     function getValueTemplate(attribute){
         return  <ValueElement attribute={attribute.name}>
-            <Value state={attribute.value} />
+            <Value state={`${attribute.value} ${attribute.unit}`} />
         </ValueElement>
     }
 
@@ -71,12 +71,22 @@ export function DeviceElement({ device }) {
 
             switch (newState.type) {
                 case 'light':
+                case 'heating':
                     if(attribute.type === 'toggle') {
                         newState.state = value;
                         newState.attributes[1].disabled = !value;
                     }
                     break;
-            
+                case 'electricity':
+                    if(attribute.type === 'toggle') {
+                        newState.state = value;
+                        if(value) {
+                            newState.attributes[1].value = 12;
+                        } else {
+                            newState.attributes[1].value= 0;
+                        } 
+                    }
+                    break;
                 default:
                     break;
             }
@@ -93,7 +103,7 @@ export function DeviceElement({ device }) {
                 </DeviceIconContainer>
             </div>
             <div className="flex-grow grid gap-xs">
-                <Text colorClass={deviceState.cube} >{deviceState.name}</Text>
+                <Text colorClass={deviceState.cube}>{deviceState.name}</Text>
                 {deviceState.attributes.map((attribute) => (
                 <div key={attribute.id}>
                     {getAttributeTemplate(attribute, deviceState)}
