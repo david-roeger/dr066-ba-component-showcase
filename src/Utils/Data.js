@@ -62,34 +62,6 @@ export default [
             },
             {
                 id: 2,
-                state: true,
-                type: 'light',
-                name: 'Lichterkette',
-                cube: 'zigbee',
-                disabled: true,
-                attributes: [ 
-                    {
-                        id: 0,
-                        type: 'toggle',
-                        name: 'Schalter',
-                        value: 0,
-                        scala: 'onOff',
-                        disabled: true
-                    },
-                    {
-                        id: 1,
-                        type: 'slider',
-                        name: 'Helligkeit',
-                        value: 40,
-                        min: 0,
-                        max: 100,
-                        scala: 'percent',
-                        disabled: true
-                    }
-                ]
-            },
-            {
-                id: 3,
                 state: false,
                 type: 'heating',
                 name: 'Heizung',
@@ -108,11 +80,35 @@ export default [
                         id: 1,
                         type: 'slider',
                         name: 'Soll-Temperatur',
-                        value: 12,
+                        value: 18,
                         min: 8,
-                        max: 20,
+                        max: 28,
                         scala: 'celsius',
                         disabled: true
+                    }
+                ]
+            },
+            {
+                id: 3,
+                state: true,
+                type: 'thermostat',
+                name: 'Sensor',
+                cube: 'zigbee',
+                disabled: false,
+                attributes: [ 
+                    {
+                        id: 0,
+                        type: 'value',
+                        name: 'Temperatur',
+                        value: 12,
+                        unit: '°C',
+                    },
+                    {
+                        id: 1,
+                        type: 'value',
+                        name: 'Luftfeuchtigkeit',
+                        value: 87,
+                        unit: '%',
                     }
                 ]
             },
@@ -144,24 +140,28 @@ export default [
             {
                 id: 5,
                 state: true,
-                type: 'thermostat',
-                name: 'Sensor',
+                type: 'light',
+                name: 'Lichterkette',
                 cube: 'zigbee',
-                disabled: false,
+                disabled: true,
                 attributes: [ 
                     {
                         id: 0,
-                        type: 'value',
-                        name: 'Temperatur',
-                        value: 12,
-                        unit: '°C',
+                        type: 'toggle',
+                        name: 'Schalter',
+                        value: 0,
+                        scala: 'onOff',
+                        disabled: true
                     },
                     {
                         id: 1,
-                        type: 'value',
-                        name: 'Luftfeuchtigkeit',
-                        value: 87,
-                        unit: '%',
+                        type: 'slider',
+                        name: 'Helligkeit',
+                        value: 40,
+                        min: 0,
+                        max: 100,
+                        scala: 'percent',
+                        disabled: true
                     }
                 ]
             },
@@ -177,7 +177,7 @@ export default [
                         id: 0,
                         type: 'value',
                         name: 'Zustand',
-                        value: 'geschlossen',
+                        value: 'Geschlossen',
                         unit: '',
                     }
                 ]
@@ -194,7 +194,7 @@ export default [
                         id: 0,
                         type: 'value',
                         name: 'Zustand',
-                        value: 'geschlossen',
+                        value: 'Geschlossen',
                         unit: '',
                     }
                 ]

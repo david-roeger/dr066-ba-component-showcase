@@ -13,6 +13,10 @@ export function StateElement({ state }) {
                 return getCameraTemplate(state);
             case 'garage':
                 return getGarageTemplate(state);
+            case 'heating':
+                return getHeatingTemplate(state);
+            case 'humiditiy':
+                return getHumidityTemplate(state)
             default:
                 break;
         }
@@ -37,6 +41,27 @@ export function StateElement({ state }) {
             <StateIconGarage state={state.value}>
             </StateIconGarage>
         </StateIconContainer> 
+    }
+
+
+    function getHeatingTemplate(state){
+        let computed = scale(state.value, 8, 28, 0, 100);
+        return  <StateIconContainer>
+            <StateIconHeating state={computed}>
+            </StateIconHeating>
+        </StateIconContainer> 
+    }
+
+    function getHumidityTemplate(state){
+        return  <StateIconContainer>
+            <StateIconHumidity state={state.value}>
+            </StateIconHumidity>
+        </StateIconContainer> 
+    }
+
+
+    function scale (number, inMin, inMax, outMin, outMax) {
+        return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 
 

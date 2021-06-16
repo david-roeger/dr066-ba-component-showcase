@@ -30,6 +30,55 @@ function getLightObj(lights) {
     return lightObj;
 }
 
+function getHeatingObj(heatings, thermostats) {
+    const heatingObj = {
+        type: 'heating',
+        name: 'Temperatur',
+        unit: '°C',
+        string: 'An'
+    }
+    let deviceCount = 0;
+    let value = 0;
+
+    thermostats.forEach(thermostat => {
+        value = thermostat.attributes[0].value;
+    });
+    heatings.forEach(heating => {
+        if(heating.attributes[0].value) {
+            deviceCount ++;
+            value = heating.attributes[1].value;
+        }
+    });
+
+    value = Math.min(28, Math.max(8, value))
+
+    heatingObj.devices = deviceCount;
+    heatingObj.value = Math.floor(value) || 0;
+
+    return heatingObj;
+}
+
+function getHumiditytObj(humidities, windows) {
+    const humidityObj = {
+        type: 'humiditiy',
+        name: 'Luftfeuchtigkeit',
+        unit: '%',
+        string: 'Offen'
+    }
+    let deviceCount = 0;
+    let value = 0;
+    humidities.forEach(humidity => {
+        if(humidity.attributes[1].value) {
+            deviceCount ++;
+            value += humidity.attributes[1].value;
+        }
+    });
+
+    humidityObj.devices = 0;
+    humidityObj.value = Math.floor(value / deviceCount) || 0;
+
+    return humidityObj;
+}
 
 function getGarageObj(garages) {
     const garageObj = {
@@ -93,24 +142,25 @@ function getCameraObj(cameras) {
         cameraStreams: cameraStreams
      };
 }
+
 function getOverview(devices) {
     const overview = [];
-    /*...cameras.map((c, index) => (
-        <VideoElement key={overviewState.length + index} src={video} />
-    ))*/
 
-    /*
-    overviews: [
-            {
-               
-            },
-
-        ], 
-
-    */
     let lights = devices.filter((d) => (d.type === 'light' && d.disabled === false));
     if(lights.length) {
         overview.push(getLightObj(lights));
+    }
+
+    let heatings = devices.filter((d) => (d.type === 'heating' && d.disabled === false));
+    let thermostats = devices.filter((d) => (d.type === 'thermostat' && d.disabled === false));
+    if(heatings.length ||thermostats.length ) {
+        overview.push(getHeatingObj(heatings, thermostats));
+    }
+
+    let humidities = devices.filter((d) => (d.type === 'thermostat' && d.disabled === false));
+    let windows = devices.filter((d) => (d.type === 'window' && d.disabled === false));
+    if(humidities.length ||windows.length ) {
+        overview.push(getHumiditytObj(humidities, windows));
     }
 
     let garages = devices.filter((d) => (d.type === 'garage' && d.disabled === false));
@@ -141,8 +191,19 @@ export function Rooms( { room }) {
     function updateDevice(device) {
         let newRoom = Object.assign(roomState);
         let index = newRoom.devices.findIndex(d => d.id === device?.id)
+        console.log(device);
         if(index !== -1) {
             newRoom.devices[index] = device;
+            if(device.type === 'heating') {
+                let t = newRoom.devices.findIndex(d => d.type === 'thermostat');
+                if(t !== -1) {
+                    if(device.attributes[0].value) {
+                        newRoom.devices[t].attributes[0].value = device.attributes[1].value;
+                    } else {
+                        newRoom.devices[t].attributes[0].value = 12;
+                    }
+                }
+            }
         }
         setRoomState(newRoom);
         setOverviewState([...getOverview(newRoom.devices)]);
