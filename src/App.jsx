@@ -20,10 +20,28 @@ function App() {
                   Zuhause
                 </Text>
               </NavIconButton>
+              <NavIconButton target="">
+                <NavIcon type="devices" />
+                <Text colorClass="white">
+                  Geräte
+                </Text>
+              </NavIconButton>
               <NavIconButton target="./" active>
                 <NavIcon type="rooms" />
                 <Text colorClass="white">
                   Räume
+                </Text>
+              </NavIconButton>
+              <NavIconButton target="">
+                <NavIcon type="automations" />
+                <Text colorClass="white">
+                  Szenen
+                </Text>
+              </NavIconButton>
+              <NavIconButton target="">
+                <NavIcon type="homee" />
+                <Text colorClass="white">
+                  homee
                 </Text>
               </NavIconButton>
             </Navigation>

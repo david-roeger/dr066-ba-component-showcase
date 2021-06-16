@@ -212,9 +212,11 @@ export function Rooms( { room }) {
 
 
     return <div className="flex flex-col gap-md p-sm pb-xl md:p-md lg:mb-0 lg:p-lg lg:pl-0 xl:p-xl xl:pl-0">
-        <Text size="xl">
-            {roomState.name}
-        </Text>
+        <div className="ml-sm">
+            <Text size="xl">
+                {roomState.name}
+            </Text>
+        </div>
         <Card title="Übersicht" col>
             {
                 overviewState.map((overview, index) => (
