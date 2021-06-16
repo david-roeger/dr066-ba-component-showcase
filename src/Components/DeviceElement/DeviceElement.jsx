@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Slider, SliderScala, SliderElement } from 'dr066-ba-development-system'
 import { Toggle, ToggleScala, ToggleElement } from 'dr066-ba-development-system'
+import { UpDownElement } from 'dr066-ba-development-system'
 import { Value, ValueElement } from 'dr066-ba-development-system'
 import { DeviceIconContainer, DeviceIcon } from 'dr066-ba-development-system'
 import { SystemIconContainer, SystemIcon } from 'dr066-ba-development-system'
@@ -57,7 +58,6 @@ export function DeviceElement({ device, callback }) {
         return  <UpDownElement attribute={attribute.name} state={attribute.value} colorClass={deviceState.cube} callback={(value) => updateAttributeValue(attribute, value)}></UpDownElement> 
     }
 
-
     function getValueTemplate(attribute){
         return  <ValueElement attribute={attribute.name}>
             <Value state={`${attribute.value} ${attribute.unit}`} />
@@ -88,9 +88,18 @@ export function DeviceElement({ device, callback }) {
                         } 
                     }
                     break;
+                case 'garage':
+                    break;
+                case 'camera':
+                    if(attribute.type === 'toggle') {
+                        newState.state = value;
+                    }
+                    break;
                 default:
                     break;
             }
+
+            console.log(newState);
             updateDeviceState(newState)
         };
     }

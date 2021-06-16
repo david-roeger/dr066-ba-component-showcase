@@ -30,6 +30,69 @@ function getLightObj(lights) {
     return lightObj;
 }
 
+
+function getGarageObj(garages) {
+    const garageObj = {
+        type: 'garage',
+        name: 'Garage',
+        unit: '%',
+        string: 'Offen'
+    }
+    let deviceCountOpen = 0;
+    let deviceCountClosed = 0;
+    let value = 0;
+    garages.forEach(garage => {
+        if(garage.attributes[0].value) {
+            deviceCountOpen ++;
+            value = 100
+        } else {
+            deviceCountClosed ++;
+        }
+    });
+
+    if(!deviceCountOpen) {
+        garageObj.devices = deviceCountClosed;
+        garageObj.string = 'Zu'
+    } else {
+        garageObj.devices = deviceCountOpen;
+    }
+    garageObj.value = value;
+
+    return garageObj;
+}
+
+function getCameraObj(cameras) {
+    const cameraObj = {
+        type: 'camera',
+        name: 'Kamera',
+        value: 'An',
+        string: 'An'
+    }
+    let deviceCountOn = 0;
+    let deviceCountOff = 0;
+    let cameraStreams = 0;
+    cameras.forEach(camera => {
+        if(camera.attributes[0].value) {
+            deviceCountOn ++;
+            cameraStreams ++;
+        } else {
+            deviceCountOff ++;
+        }
+    });
+
+    if(!deviceCountOn) {
+        cameraObj.devices = deviceCountOff;
+        cameraObj.value = 'Aus'
+        cameraObj.string = 'Aus'
+    } else {
+        cameraObj.devices = deviceCountOn;
+    }
+
+    return { 
+        cameraObj: cameraObj,
+        cameraStreams: cameraStreams
+     };
+}
 function getOverview(devices) {
     const overview = [];
     /*...cameras.map((c, index) => (
@@ -39,29 +102,30 @@ function getOverview(devices) {
     /*
     overviews: [
             {
-                id: 0,
-                type: 'garage',
-                name: 'Garage',
-                value: 0,
-                unit: '%',
-                devices: 0,
-                string: 'offen'
+               
             },
-            {
-                id: 1,
-                type: 'camera',
-                name: 'Kamera',
-                value: 'An',
-                devices: 1,
-                string: 'An'
-            },
+
         ], 
 
     */
     let lights = devices.filter((d) => (d.type === 'light' && d.disabled === false));
-    
     if(lights.length) {
         overview.push(getLightObj(lights));
+    }
+
+    let garages = devices.filter((d) => (d.type === 'garage' && d.disabled === false));
+    if(garages.length) {
+        overview.push(getGarageObj(garages));
+    }
+
+    let cameras = devices.filter((d) => (d.type === 'camera' && d.disabled === false));
+    if(cameras.length) {
+        let c = getCameraObj(cameras)
+        overview.push(c.cameraObj);
+        for (let i = 0; i < c.cameraStreams; i++) {
+            overview.push({type: video});
+        }
+        overview.push()
     }
     return overview
 }
@@ -74,7 +138,6 @@ export function Rooms( { room }) {
 
     const [overviewState, setOverviewState] = useState(getOverview(devices))
 
-    let overviews = overviewState;
     function updateDevice(device) {
         let newRoom = Object.assign(roomState);
         let index = newRoom.devices.findIndex(d => d.id === device?.id)
@@ -94,12 +157,9 @@ export function Rooms( { room }) {
         <Card title="Übersicht" col>
             {
                 overviewState.map((overview, index) => (
-                    <div key={index}>
-                        {
-                            console.log(overview)
-                        }
-                        <StateElement state={overview}></StateElement>
-                    </div>
+                    overview.type != video ?
+                        <StateElement state={overview} key={index}></StateElement> :
+                        <VideoElement key={index} src={video} />
                 ))
             }
         </Card>

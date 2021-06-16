@@ -42,14 +42,14 @@ export function StateElement({ state }) {
 
     return (
     <section className="flex flex-col items-center">
-        <p className="hidden w-full md:block">
+        <p className="hidden md:block">
             <Text>{state.name}</Text>
         </p>
         {getStateIconTemplate(state)}
-        <p className="w-full">
+        <p>
             <Text>{state.value}{state.unit}</Text>
         </p>
-        <p className="w-full">
+        <p>
             <Text colorClass="gray-500">{state.devices} {state.string}</Text>
         </p>
     </section>)
