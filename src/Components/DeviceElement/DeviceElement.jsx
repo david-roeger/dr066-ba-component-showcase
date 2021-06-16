@@ -12,12 +12,13 @@ function useForceUpdate(){
     const [value, setValue] = useState(0); // integer state
     return () => setValue(value => value + 1); // update the state to force render
 }
-export function DeviceElement({ device }) {
+export function DeviceElement({ device, callback }) {
     const forceUpdate = useForceUpdate();
 
     const [deviceState, setDeviceState] = useState(device);
     function updateDeviceState(d) {
         setDeviceState(d);
+        callback(d);
         forceUpdate();
     }
 
@@ -66,7 +67,7 @@ export function DeviceElement({ device }) {
     function updateAttributeValue(attribute, value) {
         let index = deviceState.attributes.findIndex((a) => a.id == attribute.id);
         if(index != -1) {
-            let  newState = Object.assign(deviceState);
+            let newState = Object.assign(deviceState);
             newState.attributes[index].value = value;
 
             switch (newState.type) {
@@ -129,5 +130,6 @@ DeviceElement.defaultProps = {
         cube: '',
         attributes: [ 
         ]
-    }
+    },
+    callback: (device) => {}
 };

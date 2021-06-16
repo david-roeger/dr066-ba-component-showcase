@@ -3,17 +3,6 @@ export default [
         id: 0,
         type: 'room',
         name: 'Wohnzimmer',
-        overviews: [
-            {
-                id: 0,
-                type: 'light',
-                name: 'Helligkeit',
-                value: 60,
-                unit: '%',
-                devices: 2,
-                string: 'an'
-            },
-        ],   
         devices: [
             {
                 id: 0,
@@ -215,26 +204,7 @@ export default [
         {
             id: 1,
             type: 'room',
-            name: 'Draußen',
-            overviews: [
-                {
-                    id: 0,
-                    type: 'garage',
-                    name: 'Garage',
-                    value: 0,
-                    unit: '%',
-                    devices: 0,
-                    string: 'offen'
-                },
-                {
-                    id: 1,
-                    type: 'camera',
-                    name: 'Kamera',
-                    value: 'An',
-                    devices: 1,
-                    string: 'an'
-                },
-            ],   
+            name: 'Draußen',  
             devices: [
                 {
                     id: 0,
