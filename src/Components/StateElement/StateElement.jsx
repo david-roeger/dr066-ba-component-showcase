@@ -4,7 +4,7 @@ import React from 'react';
 import { StateIconContainer, StateIconLight, StateIconCamera, StateIconGarage, StateIconHeating, StateIconHumidity } from 'dr066-ba-development-system'
 import { Text } from 'dr066-ba-development-system'
 
-export function StateElement({ state }) {
+export function StateElement({ state, detail }) {
     function getStateIconTemplate(state) {
         switch (state.type) {
             case 'light':
@@ -67,15 +67,21 @@ export function StateElement({ state }) {
 
     return (
     <section className="flex flex-col items-center">
-        <p className="hidden md:block">
-            <Text>{state.name}</Text>
-        </p>
+        {
+            detail && <p className="hidden md:block">
+                <Text>{state.name}</Text>
+            </p>
+        }
         {getStateIconTemplate(state)}
         <p>
             <Text>{state.value}{state.unit}</Text>
         </p>
+        {
+            detail && <p>
+                <Text colorClass="gray-500">{state.devices} {state.string}</Text>
+            </p>
+        }
         <p>
-            <Text colorClass="gray-500">{state.devices} {state.string}</Text>
         </p>
     </section>)
 };

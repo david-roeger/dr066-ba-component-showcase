@@ -46,7 +46,7 @@ export function RoomDetail( { room }) {
                 {roomState.name}
             </Text>
         </div>
-        <StateElementCard devices={devices}></StateElementCard>
+        <StateElementCard devices={devices} title="Übersicht" detail></StateElementCard>
         <Card title="Geräte">
             {
                 devices.map((device, index) => (
