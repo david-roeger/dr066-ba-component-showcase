@@ -3,6 +3,7 @@ export default [
         id: 0,
         type: 'room',
         name: 'Wohnzimmer',
+        button: 'Ab ins',
         devices: [
             {
                 id: 0,
@@ -205,6 +206,7 @@ export default [
             id: 1,
             type: 'room',
             name: 'Draußen',  
+            button: 'Auf nach',
             devices: [
                 {
                     id: 0,

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation} from 'react-router-dom';
 
 import { Slider, SliderScala, SliderElement } from 'dr066-ba-development-system'
 import { Toggle, ToggleScala, ToggleElement } from 'dr066-ba-development-system'
@@ -121,13 +122,14 @@ export function DeviceElement({ device, callback }) {
             ))}
             </div>
         </div>
-        <div className="bg-gray-300 border border-black rounded-r-sm flex">
-            <div className="my-auto">
-                <SystemIconContainer>
-                    <SystemIcon type="next"/>
-                </SystemIconContainer>
-            </div>
+            <div className="bg-gray-300 border border-black rounded-r-sm">
+                <Link to={{pathname: useLocation().pathname, search: 'popUp=true'}} className="flex h-full w-full items-center">
+                    <SystemIconContainer>
+                        <SystemIcon type="next"/>
+                    </SystemIconContainer>
+                </Link>
         </div>
+
     </section>)
 };
 
