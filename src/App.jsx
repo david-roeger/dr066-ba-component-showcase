@@ -1,16 +1,16 @@
 import React from 'react';
-
+import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import { Grid, Navigation, NavIconButton, NavIcon, Text, VideoElement } from 'dr066-ba-development-system';
 
-import { Rooms } from './Layouts/index'
+import { Rooms, RoomDetail } from './Layouts/index'
 
 import d from './Utils/Data'
 
 function App() {
-  const data  = [d[0]];
-
+  const data  = d;
   console.log(data);
   return (
+      <BrowserRouter>
         <div className="font-inter">
           <Grid full>
             <Navigation>
@@ -26,7 +26,7 @@ function App() {
                   Geräte
                 </Text>
               </NavIconButton>
-              <NavIconButton target="./" active>
+              <NavIconButton target="/rooms/" active>
                 <NavIcon type="rooms" />
                 <Text colorClass="white">
                   Räume
@@ -47,18 +47,23 @@ function App() {
             </Navigation>
             
             <div className="col-start-1 col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-6">
-              {
-                data.map((room, index) => (
-                  <div key={index}>
-                      <Rooms room={room}>
-                      </Rooms>
-                    </div>
-                ))
-              }
+              <Switch>
+                <Redirect exact from='/' to="/rooms/" />
+                <Redirect exact from='/rooms/detail/' to="/rooms/detail/0" />
+                <Route exact path="/rooms/" render={() => <Rooms rooms={data}></Rooms> }/>
+                <Route exact path="/rooms/detail/:id" children={(props) => {
+                    let id = props.match.params.id
+                    return (
+                        <RoomDetail room={data[id]}></RoomDetail>
+                    )
+                  }} 
+                />
 
-            </div>
+                </Switch>
+              </div>
             </Grid>
         </div>
+      </BrowserRouter>
   );
 }
 export default App
