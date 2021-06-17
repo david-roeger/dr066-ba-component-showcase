@@ -1,9 +1,9 @@
 import React from 'react';
-import {BrowserRouter, Route, Redirect, Switch, } from 'react-router-dom';
+import {BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom';
 import { Grid, Navigation, NavIconButton, NavIcon, Text, VideoElement } from 'dr066-ba-development-system';
 
 import { Rooms, RoomDetail, PopUp } from './Layouts/index'
-
+import { Nav } from './Components/index' 
 import d from './Utils/Data'
 
 function App() {
@@ -14,39 +14,7 @@ function App() {
         <div className="font-inter">
           <div className="max-h-screen h-full overflow-y-auto">
             <Grid full>
-              <Navigation>
-                <NavIconButton target="home">
-                  <NavIcon/>
-                  <Text colorClass="white">
-                    Zuhause
-                  </Text>
-                </NavIconButton>
-                <NavIconButton target="/devices">
-                  <NavIcon type="devices" />
-                  <Text colorClass="white">
-                    Geräte
-                  </Text>
-                </NavIconButton>
-                <NavIconButton target="/rooms/" active>
-                  <NavIcon type="rooms" />
-                  <Text colorClass="white">
-                    Räume
-                  </Text>
-                </NavIconButton>
-                <NavIconButton target="/automations">
-                  <NavIcon type="automations" />
-                  <Text colorClass="white">
-                    Szenen
-                  </Text>
-                </NavIconButton>
-                <NavIconButton target="/homee">
-                  <NavIcon type="homee" />
-                  <Text colorClass="white">
-                    homee
-                  </Text>
-                </NavIconButton>
-              </Navigation>
-              
+              <Nav></Nav>
               <div className="col-start-1 col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-6">
                 <Switch>
                   <Redirect exact from='/' to="/rooms/" />
@@ -60,7 +28,7 @@ function App() {
                     }} 
                   />
                   <Redirect from='/rooms/detail/:id/' to="/rooms/detail/:id/?popUp=true" />
-                  <Redirect from='/' to="/rooms/?popUp=true" />
+                  <Redirect from='/' to="/rooms/" />
                   </Switch>
                 </div>
               </Grid>

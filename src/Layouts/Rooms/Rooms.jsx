@@ -52,7 +52,6 @@ export function Rooms( { rooms }) {
                             </div>
                         </div>
                     ))
-
                 }
             </Grid>
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom'
 import { Text, Card, Button } from 'dr066-ba-development-system'
 
-export const PopUp = withRouter(({ location }) => {
+export const PopUp = withRouter(({ location, history }) => {
     const query = new URLSearchParams(location.search)
     let showPopUp = false;
     for (const [key, value] of query) {
@@ -11,7 +11,6 @@ export const PopUp = withRouter(({ location }) => {
             showPopUp = true;
         }
     }
-    console.log(location, showPopUp);
     return showPopUp && <div className="bg-gray-100 bg-opacity-90 backdrop-filter backdrop-blur w-full h-screen absolute top-0 z-[60] grid p-sm md:p-md lg:p-lg xl:p-xl">
         <div className=" mx-auto my-auto ">
             <Card title="Oooooops...">
@@ -19,7 +18,7 @@ export const PopUp = withRouter(({ location }) => {
                 <div className="flex">
                     <div className="mx-auto">
                         <Link to={location.pathname}>
-                            <Button>Alles klar</Button>
+                            <Button>Alles klar!</Button>
                         </Link>
                     </div>
                 </div>
