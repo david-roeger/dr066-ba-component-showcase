@@ -1,4 +1,2 @@
-export { Rooms } from './Rooms/Rooms'
-export { RoomDetail } from './RoomDetail/RoomDetail'
-
-export { PopUp } from './PopUp/PopUp'
+export { Home } from './Home/Home'
+export { Gallery } from './Gallery/Gallery'

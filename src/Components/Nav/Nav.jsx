@@ -7,55 +7,22 @@ export const Nav = withRouter(({ location, history }) => {
     return (
         <Navigation>
             <NavIconButtonWrapper>
-                <Link to={{pathname: location.pathname, search: "?popUp=true"}}>
-                    <NavIconButton>
+                <Link to="/">
+                    <NavIconButton active={location.pathname === "/"}>
                         <NavIcon/>
                         <Text colorClass="white">
-                            Zuhause
+                            Home
                         </Text>
                     </NavIconButton>
                 </Link>
             </NavIconButtonWrapper>
 
             <NavIconButtonWrapper>
-                <Link to={{pathname: location.pathname, search: "?popUp=true"}}>
-                    <NavIconButton>
+                <Link to="/gallery/">
+                    <NavIconButton active={location.pathname === "/gallery/"}>
                         <NavIcon type="devices"/>
                         <Text colorClass="white">
-                            Geräte
-                        </Text>
-                    </NavIconButton>
-                </Link>
-            </NavIconButtonWrapper>
-
-            <NavIconButtonWrapper>
-                <Link to="/rooms/">
-                    <NavIconButton active>
-                        <NavIcon type="rooms"/>
-                        <Text colorClass="white">
-                            Räume
-                        </Text>
-                    </NavIconButton>
-                </Link>
-            </NavIconButtonWrapper>
-
-            <NavIconButtonWrapper>
-                <Link to={{pathname: location.pathname, search: "?popUp=true"}}>
-                    <NavIconButton>
-                        <NavIcon type="automations"/>
-                        <Text colorClass="white">
-                            Szenen
-                        </Text>
-                    </NavIconButton>
-                </Link>
-            </NavIconButtonWrapper>
-
-            <NavIconButtonWrapper>
-                <Link to={{pathname: location.pathname, search: "?popUp=true"}}>
-                    <NavIconButton>
-                        <NavIcon type="homee"/>
-                        <Text colorClass="white">
-                            homee
+                        Gallery
                         </Text>
                     </NavIconButton>
                 </Link>
