@@ -27,7 +27,6 @@ export function Gallery() {
                   <div>
                     <img className="rounded-sm" src="https://source.unsplash.com/f-umZlxutDM"/>
                   </div>
-
                 </Card>
                 <Text size="sm">DDP <a className="hover:underline text-zigbee-500" href="https://unsplash.com/photos/jAou3JvwalM">@moino007</a></Text>
                 <Text size="sm">Peter Ivey-Hansen <a className="hover:underline text-zwave-500" href="https://unsplash.com/photos/97tEm_VSHBs">@peteriveyphotography</a></Text>
