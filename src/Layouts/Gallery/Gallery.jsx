@@ -29,10 +29,10 @@ export function Gallery() {
                   </div>
 
                 </Card>
-                <Text size="sm">DDP <a className="hover:underline text-blue-500" href="https://unsplash.com/photos/jAou3JvwalM">@moino007</a></Text>
-                <Text size="sm">Peter Ivey-Hansen <a className="hover:underline text-blue-500" href="https://unsplash.com/photos/97tEm_VSHBs">@peteriveyphotography</a></Text>
-                <Text size="sm">yogesh kumar <a className="hover:underline text-blue-500" href="https://unsplash.com/photos/-iNq63c2vt8">@capturelove2</a></Text>
-                <Text size="sm">Matt Flores <a className="hover:underline text-blue-500" href="https://unsplash.com/photos/f-umZlxutDM">@matdflo</a></Text>
+                <Text size="sm">DDP <a className="hover:underline text-zigbee-500" href="https://unsplash.com/photos/jAou3JvwalM">@moino007</a></Text>
+                <Text size="sm">Peter Ivey-Hansen <a className="hover:underline text-zwave-500" href="https://unsplash.com/photos/97tEm_VSHBs">@peteriveyphotography</a></Text>
+                <Text size="sm">yogesh kumar <a className="hover:underline text-zwave-500" href="https://unsplash.com/photos/-iNq63c2vt8">@capturelove2</a></Text>
+                <Text size="sm">Matt Flores <a className="hover:underline text-enocean-500" href="https://unsplash.com/photos/f-umZlxutDM">@matdflo</a></Text>
             </Grid>
         </div>
         
