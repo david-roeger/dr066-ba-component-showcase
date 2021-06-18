@@ -14,7 +14,7 @@ export function Home() {
                     Home
                 </Text>
                 <Text>
-                    This is an application template
+                    Das ist eine (fast) leere App, welche als Template für neue Apps genutzt werden kann.
                 </Text>
             <Grid cols={1}>
               <Card title="Card Component">
