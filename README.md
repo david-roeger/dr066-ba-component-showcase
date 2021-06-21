@@ -1,6 +1,6 @@
 # Test App Showcasing the integration of design components
 
-https://roeger-ba-component-showcase.netlify.app/
+https://roeger-ba-component-showcase-template.netlify.app/
 
 ## Developing
 
