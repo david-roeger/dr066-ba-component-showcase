@@ -1,4 +1,4 @@
-const theme = require('dr066-ba-design-token-builder/tailwindTheme');
+const theme = require('dr066-ba-design-token-builder/build/web/tailwindTheme');
 
 module.exports = {
   mode: "jit",
