@@ -28,9 +28,8 @@ npm run tokens
 
 ## Building
 
-
 ```bash
 npm run build
 ```
 
-> You can preview the built app with ```npm run preview```
+> You can preview the built app with `npm run preview`
